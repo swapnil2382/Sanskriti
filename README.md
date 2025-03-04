@@ -39,6 +39,5 @@ Feel free to fork this repository and submit pull requests for enhancements or b
 ## License
 This project is licensed under the MIT License.
 
----
-Developed by [Your Name]
+
 
