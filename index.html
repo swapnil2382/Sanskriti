@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANSKRITI</title>
+    <style>
+        /* Reset and General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 15px;
+            color: #fff;
+            position: relative;
+            z-index: 1000;
+            
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            color: #ffcc00;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-right: 15px;
+        }
+
+        .slogan {
+            font-size: 14px;
+            color: #fff;
+            font-style: italic;
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+            margin-left: 20px;
+            
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ffcc00;
+            color: #333;
+            border-radius: 0 3px 3px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #ffa500;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+       
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(hero-background.jpg.png) no-repeat center center/cover;
+            padding: 100px 20px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: textSlide 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+    padding: 15px 30px;
+    background-color: #ffcc00;
+    border: none;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ffa500;
+    transform: scale(1.05);
+}
+
+
+        /* Introduction Section */
+        .intro-section {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .intro-section .cta-button {
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            border: none;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        /* Featured Content */
+        .featured-section {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .featured-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        
+.spotlight-item {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    opacity: 0;
+    animation: slideUp 1s ease-out;
+    cursor: pointer;
+}
+.spotlight-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.spotlight-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+        .spotlight-item .heritage-bg {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        /* Dynamic Backgrounds */
+        .heritage-bg.taj-mahal { background-image: url(taj-mahal.jpg); }
+        .heritage-bg.hampi { background-image: url(hampi.jpg); }
+        .heritage-bg.qutub-minar { background-image: url(qutubminar.png); }
+        .heritage-bg.red-fort { background-image: url(redfort.png); }
+        .heritage-bg.hawa-mahal { background-image: url(havamahal.png); }
+        .heritage-bg.ellora-caves { background-image: url(ellora.jpeg); }
+        .heritage-bg.ajanta-caves { background-image: url(ajanta.jpg); }
+        .heritage-bg.lotus-temple { background-image: url(lotus.jpeg); }
+        .heritage-bg.jaisalmer-fort { background-image: url(jaisalmer.jpeg); }
+        .heritage-bg.konark-sun-temple { background-image: url(konarak.jpeg); }
+        .heritage-bg.chola-temples { background-image: url(chola.jpeg); }
+        .heritage-bg.victoria-memorial { background-image: url(victoria.jpeg); }
+
+        /* Interactive Elements */
+        .interactive-section {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .interactive-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .quiz, .timeline {
+            width: 45%;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .quiz h3, .timeline h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .quiz p, .timeline p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons {
+            margin: 15px 0;
+        }
+
+        .footer .social-icons a {
+            color: #ffcc00;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .footer .newsletter-signup input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px 0 0 3px;
+            width: 250px;
+        }
+
+        .footer .newsletter-signup button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ffcc00;
+            color: #333;
+            border-radius: 0 3px 3px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer .newsletter-signup button:hover {
+            background-color: #ffa500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .slogan {
+                font-size: 12px;
+            }
+
+            .search-bar {
+                margin-top: 10px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                background-color: #444;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links.open {
+                max-height: 300px;
+                padding: 10px 0;
+            }
+
+            .featured-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .spotlight-item {
+                width: 90%;
+            }
+
+            .interactive-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quiz, .timeline {
+                width: 100%;
+            }
+        }
+
+        @keyframes textSlide {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes heroFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1, .hero-content p {
+    animation: heroFadeIn 1.5s ease-out;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* Ensure background is dark */
+    padding: 15px;
+    color: #fff;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff; /* Ensure link text is white */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Highlight color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #444; /* Ensure background is visible */
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .nav-links.open {
+        max-height: 300px;
+        opacity: 1;
+        padding: 10px 0;
+    }
+}
+
+
+/* Animation Keyframes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Apply Animation Classes */
+.animated-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.animated-slide-out {
+    animation: slideOut 0.5s ease-out forwards;
+}
+
+/* Back-to-Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#back-to-top.show {
+    display: flex;
+}
+
+#food-section {
+    padding: 20px;
+    background-color: #f8f8f8; /* Light grey background */
+    text-align: center;
+}
+
+#food-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: #333;
+}
+
+.food-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.food-left, .food-right {
+    flex: 1;
+    padding: 10px;
+    max-width: 48%;
+}
+
+.food-item {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    border-radius: 10px; /* Optional: rounded corners */
+    background-color: #fff; /* White background for better contrast */
+    padding: 10px;
+}
+
+.food-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    cursor: pointer;
+}
+
+.food-image {
+    flex: 1;
+    max-width: 150px;
+    margin: 10px;
+}
+
+.food-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px; /* Optional: to make images look better */
+}
+
+.food-info {
+    flex: 2;
+    margin: 10px;
+    text-align: left;
+}
+
+.food-info h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.food-info p {
+    margin: 10px 0 0;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .food-left, .food-right {
+        max-width: 100%;
+    }
+
+    .food-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .food-info {
+        text-align: center;
+    }
+}
+
+.scroll-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>SANSKRITI</h1>
+            <div class="slogan">Grow More, Explore More</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">Heritage</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Sanskriti</h1>
+            <p>Discover the rich cultural and heritage of India</p>
+          
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <h2>Explore Things with Fun and Grab the Knowledge</h2>
+        <p>Discover the rich history and culture of India through interactive content, quizzes, and more.</p>
+        <a href="#quiz-section" class="cta-button">Explore Now</a>
+        <a href="#heritage-section" class="cta-button">Learn More</a>
+    </section>
+
+    <!-- Heritage Section -->
+    <section class="featured-section" id="heritage-section">
+        <h2>Top Heritage Sites</h2>
+        <div class="featured-content">
+            <div class="spotlight-item">
+                <div class="heritage-bg taj-mahal"></div>
+                <h3>Taj Mahal</h3>
+                <p>Agra, Uttar Pradesh</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg hampi"></div>
+                <h3>Hampi</h3>
+                <p>Hampi, Karnataka</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg qutub-minar"></div>
+                <h3>Qutub Minar</h3>
+                <p>Delhi</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg red-fort"></div>
+                <h3>Red Fort</h3>
+                <p>Delhi</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg hawa-mahal"></div>
+                <h3>Hawa Mahal</h3>
+                <p>Jaipur, Rajasthan</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg ellora-caves"></div>
+                <h3>Ellora Caves</h3>
+                <p>Aurangabad, Maharashtra</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg ajanta-caves"></div>
+                <h3>Ajanta Caves</h3>
+                <p>Aurangabad, Maharashtra</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg lotus-temple"></div>
+                <h3>Lotus Temple</h3>
+                <p>Delhi</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg jaisalmer-fort"></div>
+                <h3>Jaisalmer Fort</h3>
+                <p>Jaisalmer, Rajasthan</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg konark-sun-temple"></div>
+                <h3>Konark Sun Temple</h3>
+                <p>Konark, Odisha</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg chola-temples"></div>
+                <h3>Chola Temples</h3>
+                <p>Tamil Nadu</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg victoria-memorial"></div>
+                <h3>Victoria Memorial</h3>
+                <p>Kolkata, West Bengal</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg victoria-memorial"></div>
+                <h3>Victoria Memorial</h3>
+                <p>Kolkata, West Bengal</p>
+            </div>
+            <div class="spotlight-item">
+                <div class="heritage-bg victoria-memorial"></div>
+                <h3>Victoria Memorial</h3>
+                <p>Kolkata, West Bengal</p>
+            </div>
+        </div>
+    </section>
+<hr>
+    
+
+<div id="food-section">
+    <h2>Famous Foods in India</h2>
+    <div class="food-container">
+        <div class="food-left">
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/no6ufekgq0q2xd4anvz5" alt="Food Image 1">
+                    </div>
+                    <div class="food-info">
+                        <h3>Vada Pav</h3>
+                        <p>Often referred to as the Indian burger, Vada Pav is a popular street food from Mumbai. It consists of a spicy potato fritter (vada) served in a bun (pav).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://easychickenrecipes.com/wp-content/uploads/2019/11/butter-chicken-reshoot-6-of-8.jpg" alt="Food Image 2">
+                    </div>
+                    <div class="food-info">
+                        <h3>Butter Chicken</h3>
+                        <p>A rich and creamy dish made with chicken, butter, and a variety of Indian spices. Originating from Delhi, it’s a popular dish worldwide.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://www.ruchiskitchen.com/wp-content/uploads/2020/09/Chicken-Biryani-Recipe-01-1-500x500.jpg" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Biryani</h3>
+                        <p>A flavorful rice dish cooked with meat, vegetables, and a mix of aromatic spices. Each region in India has its unique take on biryani.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeYXBG4c4BsyyssXKix3ctaQy1JLC9DjYAiw&s" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Samosa</h3>
+                        <p>A popular snack consisting of a crisp pastry filled with spiced potatoes, peas, and sometimes meat. It’s a common street food across India.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://www.yummytummyaarthi.com/wp-content/uploads/2014/10/1-13.jpg" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Rogan Josh</h3>
+                        <p>A flavorful and aromatic curry made with tender pieces of lamb or goat, cooked in a rich gravy of yogurt, garlic, and spices. Originating from Kashmir.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more food items as needed -->
+        </div>
+        <div class="food-right">
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://static.toiimg.com/thumb/63841432.cms?width=1200&height=900" alt="Food Image 6">
+                    </div>
+                    <div class="food-info">
+                        <h3>Dosa</h3>
+                        <p>A thin and crispy pancake made from fermented rice and lentil batter. Popular in South India, often served with chutney and sambar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHRLdh98eoe_im8IR0eR6whtnWS7ptFU7r3KFvHSbT6jmACe6kuBhUgMYQv1sRTIrYDIY&usqp=CAU" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Chole Bhature</h3>
+                        <p>A popular dish from North India, consisting of spicy chickpeas (chole) and deep-fried bread (bhature). Often enjoyed as a hearty breakfast.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2o3PghexcMxeh3ac-TydunN9Rw4SyV8MCXg&s" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Paneer Tikka</h3>
+                        <p>Marinated cubes of paneer (Indian cottage cheese) grilled to perfection. Served with mint chutney, it’s a favorite appetizer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://www.healthshots.com/wp-content/uploads/2020/09/masala-chai.jpg" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Masala Chai</h3>
+                        <p>A flavorful tea made by brewing black tea with a mixture of aromatic Indian spices and herbs. A staple in every Indian household.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="food-inner">
+                    <div class="food-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUZUM9e0an8PJFhUuEctQkadnns19GaLM0ZA&s" alt="Food Image 7">
+                    </div>
+                    <div class="food-info">
+                        <h3>Gulab Jamun</h3>
+                        <p>A popular Indian dessert made from deep-fried dough balls soaked in a sugary syrup flavored with cardamom and rose water.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Quiz and Timeline Section -->
+    <section class="interactive-section" id="quiz-section">
+        <div class="interactive-content">
+            <div class="quiz">
+                <h3>Interactive Quiz</h3>
+                <p>Test your knowledge of Indian culture and heritage.</p>
+                <button class="cta-button">Start Quiz</button>
+            </div>
+            <div class="timeline">
+                <h3>Historical Timeline</h3>
+                <p>Explore India's rich history through an interactive timeline.</p>
+                <button class="cta-button">View Timeline</button>
+            </div>
+        </div>
+    </section>
+<!-- Back-to-Top Button -->
+<button id="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Sanskriti. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+        <div class="newsletter-signup">
+            <p>Subscribe to our newsletter:</p>
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle menu for mobile view
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('open');
+        }
+
+  // Scroll animations for heritage sites
+const spotlightItems = document.querySelectorAll('.spotlight-item');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Element is visible, apply slide-in animation
+            entry.target.classList.add('animated-slide-in');
+            entry.target.classList.remove('animated-slide-out');
+        } else {
+            // Element is not visible, apply slide-out animation
+            entry.target.classList.add('animated-slide-out');
+            entry.target.classList.remove('animated-slide-in');
+        }
+    });
+}, { threshold: 0.1 }); // Adjust the threshold for earlier or later trigger
+
+spotlightItems.forEach(item => {
+    observer.observe(item);
+});
+
+// Back-to-Top Button
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+
+        // Scroll to sections for buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+        const foodItems = document.querySelectorAll('.food-item');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-in');
+                } else {
+                    entry.target.classList.remove('scroll-in');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        foodItems.forEach(item => {
+            observer.observe(item);
+        });
+    });
+</script>
+</body>
+</html>
